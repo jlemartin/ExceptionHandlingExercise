@@ -21,6 +21,9 @@ namespace ExceptionHandlingExercise
             var arr = new char[] { '1', '2', '3', '4', '5', '6', 'a', 'b', 'c'};
             var numbers = new List<int>();
             var str = "";
+            var errStr = "";
+            var strEnd = 0;
+            var newErrStr = "";
             
             // Make a foreach loop to iterate through your character array
             foreach (var item in arr)
@@ -36,6 +39,11 @@ namespace ExceptionHandlingExercise
                 catch (Exception e)
                 {
                     Console.WriteLine($"Unable to Parse '{item}'");
+                    errStr = e.ToString();
+                    strEnd = errStr.IndexOf('\n');
+                    newErrStr = errStr.Substring(0, strEnd);
+
+                    Console.WriteLine($"FYI: {newErrStr}");
                 }
                 finally
                 {
@@ -62,6 +70,9 @@ namespace ExceptionHandlingExercise
             {
                 Console.WriteLine(num);
             }
+
+            Console.WriteLine();
+            
         }
     }
 }
